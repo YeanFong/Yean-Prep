@@ -1,8 +1,12 @@
-import React from "react";
+// src/quizzes/quiz7.js
+import React, { useState } from "react";
 
-function Quiz7() {
-  const questions = [
+export const quiz7 = {
+  id: "quiz7",
+  title: "Quiz 7 (React Effects & Advanced Hooks)",
+  questions: [
     {
+      id: 1,
       question: "When does the following effect run?",
       code: `
 useEffect(() => {
@@ -20,6 +24,7 @@ useEffect(() => {
         "With a dependency array [userId, postId], the effect runs on mount and whenever userId or postId changes."
     },
     {
+      id: 2,
       question: "What's the correct syntax for a cleanup function in useEffect?",
       code: `
 useEffect(() => {
@@ -38,7 +43,9 @@ useEffect(() => {
         "useEffect cleanup is done by returning a function: return () => clearInterval(timer)."
     },
     {
-      question: "What is the main difference between useEffect and useLayoutEffect?",
+      id: 3,
+      question:
+        "What is the main difference between useEffect and useLayoutEffect?",
       code: "",
       options: [
         "They are identical",
@@ -51,6 +58,7 @@ useEffect(() => {
         "useLayoutEffect fires synchronously after DOM updates, while useEffect runs asynchronously after painting."
     },
     {
+      id: 4,
       question: "What does useCallback do?",
       code: "",
       options: [
@@ -64,6 +72,7 @@ useEffect(() => {
         "useCallback memoizes a function so its identity is stable between renders unless dependencies change."
     },
     {
+      id: 5,
       question: "What is the primary purpose of the useEffect Hook in React?",
       code: "",
       options: [
@@ -77,6 +86,7 @@ useEffect(() => {
         "useEffect is used for side effects such as data fetching, subscriptions, and DOM updates."
     },
     {
+      id: 6,
       question: "How do you make useEffect run only once (on mount)?",
       code: "",
       options: [
@@ -90,7 +100,8 @@ useEffect(() => {
         "An empty dependency array means the effect runs only once after the initial render."
     },
     {
-      question: "What does the dependency array in useEffect control?",
+      id: 7,
+      question: <b>What does the dependency array in useEffect control?</b>,
       code: "",
       options: [
         "Which state variables to create",
@@ -103,6 +114,7 @@ useEffect(() => {
         "React re-runs the effect whenever one of the dependencies in the array changes."
     },
     {
+      id: 8,
       question: "What does the following code do?",
       code: `
 useEffect(() => {
@@ -120,6 +132,7 @@ useEffect(() => {
         "Without a dependency array, the effect runs after every render and updates the title each time."
     },
     {
+      id: 9,
       question: "What is the syntax for useMemo?",
       code: "",
       options: [
@@ -133,6 +146,7 @@ useEffect(() => {
         "useMemo takes a function that returns a value and a dependency array: useMemo(() => value, [deps])."
     },
     {
+      id: 10,
       question: "What is the purpose of useReducer?",
       code: "",
       options: [
@@ -146,6 +160,7 @@ useEffect(() => {
         "useReducer is useful for complex state transitions driven by actions."
     },
     {
+      id: 11,
       question: "What is the purpose of the return function in useEffect?",
       code: "",
       options: [
@@ -159,6 +174,7 @@ useEffect(() => {
         "The function returned from useEffect is the cleanup function for that effect."
     },
     {
+      id: 12,
       question: "What's the difference between useMemo and useCallback?",
       code: "",
       options: [
@@ -172,6 +188,7 @@ useEffect(() => {
         "useMemo is for memoizing values; useCallback is specifically for memoizing functions."
     },
     {
+      id: 13,
       question: "When does useEffect run by default?",
       code: "",
       options: [
@@ -185,6 +202,7 @@ useEffect(() => {
         "Without a dependency array, useEffect runs after every completed render."
     },
     {
+      id: 14,
       question:
         "Which code is equivalent?\nCode A: useCallback(() => doSomething(), [a])\nCode B: useMemo(() => () => doSomething(), [a])",
       code: "",
@@ -199,6 +217,7 @@ useEffect(() => {
         "useCallback(fn, deps) is essentially useMemo(() => fn, deps); both produce a memoized function."
     },
     {
+      id: 15,
       question: "What is the correct signature of a reducer function?",
       code: "",
       options: [
@@ -212,6 +231,7 @@ useEffect(() => {
         "A reducer takes the current state and an action, and returns the new state."
     },
     {
+      id: 16,
       question: "What does useMemo do?",
       code: "",
       options: [
@@ -225,6 +245,7 @@ useEffect(() => {
         "useMemo memoizes the result of a computation so it’s only recomputed when dependencies change."
     },
     {
+      id: 17,
       question:
         "Given this reducer:\n\nfunction reducer(state, action) {\n  switch (action.type) {\n    case 'INCREMENT':\n      return state + 1;\n    default:\n      return state;\n  }\n}\n\nHow do you dispatch an increment action?",
       code: "",
@@ -239,6 +260,7 @@ useEffect(() => {
         "Actions are plain objects; you dispatch({ type: 'INCREMENT' })."
     },
     {
+      id: 18,
       question: "What problem does this code have?",
       code: `
 useEffect(() => {
@@ -256,7 +278,9 @@ useEffect(() => {
         "Because there is no dependency array, the effect runs after every render and also updates state, causing an infinite loop; it’s also missing an explicit dependency list."
     },
     {
-      question: "Why would you use useReducer instead of useState?",
+      id: 19,
+      question:
+        "Why would you use useReducer instead of useState?",
       code: "",
       options: [
         "useReducer is always faster",
@@ -269,6 +293,7 @@ useEffect(() => {
         "useReducer shines when state logic is complex or derived from previous state via actions."
     },
     {
+      id: 20,
       question: "When should you use useLayoutEffect instead of useEffect?",
       code: "",
       options: [
@@ -281,22 +306,148 @@ useEffect(() => {
       explanation:
         "useLayoutEffect is used when you need to read layout or synchronously re-measure DOM to avoid flicker."
     }
-  ];
+  ]
+};
+
+function Quiz7() {
+  const questions = quiz7.questions;
+  const [answers, setAnswers] = useState({});
+  const [checked, setChecked] = useState(false);
+  const [score, setScore] = useState(0);
+
+  const handleOptionChangeQuiz7 = (qIndex, optionIndex, isMultiple) => {
+    setChecked(false); // Reset feedback when options are changed
+
+    setAnswers((prev) => {
+      const next = { ...prev };
+
+      if (isMultiple) {
+        const current = next[qIndex] || [];
+        if (current.includes(optionIndex)) {
+          next[qIndex] = current.filter((i) => i !== optionIndex);
+        } else {
+          next[qIndex] = [...current, optionIndex];
+        }
+      } else {
+        next[qIndex] = optionIndex;
+      }
+
+      return next;
+    });
+  };
+
+  const handleCheckAnswersQuiz7 = () => {
+    let newScore = 0;
+
+    questions.forEach((q, qIndex) => {
+      const userAns = answers[qIndex];
+      const correct = q.correctIndex;
+      let isCorrect = false;
+
+      if (Array.isArray(correct)) {
+        const correctSet = [...correct].sort().join(",");
+        const userSet = Array.isArray(userAns)
+          ? [...userAns].sort().join(",")
+          : "";
+        isCorrect = correctSet === userSet;
+      } else {
+        isCorrect = userAns === correct;
+      }
+
+      if (isCorrect) newScore += 1;
+    });
+
+    setScore(newScore);
+    setChecked(true);
+  };
 
   return (
-    <div>
-      <h2>Quiz 7 (React Effects & Advanced Hooks)</h2>
-      {questions.map((q, index) => (
-        <div key={index} className="question-card">
-          <p>{q.question}</p>
-          {q.options.map((option, optionIndex) => (
-            <div key={optionIndex}>
-              <input type="radio" id={`q${index}-opt${optionIndex}`} />
-              <label htmlFor={`q${index}-opt${optionIndex}`}>{option}</label>
-            </div>
-          ))}
-        </div>
-      ))}
+    <div className="quiz">
+      <h2>{quiz7.title}</h2>
+
+      {questions.map((q, qIndex) => {
+        const isMultiple = Array.isArray(q.correctIndex);
+        const name = `q${qIndex}`;
+
+        return (
+          <div key={q.id} className="question-block">
+            {/* number in front of the question */}
+            <h3>{qIndex + 1}. <strong>{q.question}</strong></h3>
+
+            {q.code && (
+              <pre className="code-block">
+                <code>{q.code}</code>
+              </pre>
+            )}
+
+            {q.options.map((option, optionIndex) => {
+              const value = answers[qIndex];
+              const isChecked = isMultiple
+                ? (value || []).includes(optionIndex)
+                : value === optionIndex;
+
+              return (
+                <label
+                  key={optionIndex}
+                  className="option"
+                  style={{ display: "block", margin: "4px 0" }} // ONE OPTION PER LINE
+                >
+                  <input
+                    type={isMultiple ? "checkbox" : "radio"}
+                    name={name}
+                    checked={isChecked}
+                    onChange={() =>
+                      handleOptionChangeQuiz7(qIndex, optionIndex, isMultiple)
+                    }
+                  />
+                  {" "}{option}
+                </label>
+              );
+            })}
+
+            {checked && (
+              <div className="feedback">
+                {(() => {
+                  const userAns = answers[qIndex];
+                  const correct = q.correctIndex;
+                  let isCorrect = false;
+
+                  if (Array.isArray(correct)) {
+                    const correctSet = [...correct].sort().join(",");
+                    const userSet = Array.isArray(userAns)
+                      ? [...userAns].sort().join(",")
+                      : "";
+                    isCorrect = correctSet === userSet;
+                  } else {
+                    isCorrect = userAns === correct;
+                  }
+
+                  return (
+                    <>
+                      <p>{isCorrect ? "✅ Correct" : "❌ Incorrect"}</p>
+                      <p>
+                        <strong>Correct answer(s): </strong>
+                        {Array.isArray(correct)
+                          ? correct.map((i) => q.options[i]).join(", ")
+                          : q.options[correct]}
+                      </p>
+                      {q.explanation && <p>{q.explanation}</p>}
+                    </>
+                  );
+                })()}
+              </div>
+            )}
+          </div>
+        );
+      })}
+
+      <button onClick={handleCheckAnswersQuiz7}>Check Answers</button>
+
+      {checked && (
+        <p className="score">
+          Score: {score} / {questions.length}
+        </p>
+      )}
     </div>
   );
 }

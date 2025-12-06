@@ -7,6 +7,8 @@ import Quiz9 from "./quizzes/quiz9";
 import Quiz10 from "./quizzes/quiz10";
 
 function App() {
+  const [showSolutions, setShowSolutions] = useState(false);
+
   const [selectedQuiz, setSelectedQuiz] = useState("quiz6"); // Default to Quiz 6
 
   const handleQuizChange = (quizId) => {

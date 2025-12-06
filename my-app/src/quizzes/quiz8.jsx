@@ -1,8 +1,13 @@
-import React from "react";
+// src/quizzes/quiz8.js
+import React, { useState } from "react";
+import { checkAnswers } from "../utils/checkAnswers"; // Import global utility function
 
-function Quiz8() {
-  const questions = [
+export const quiz8 = {
+  id: "quiz8",
+  title: "Quiz 8 (Data Fetching & State Management)",
+  questions: [
     {
+      id: 1,
       question:
         "What term best describes data in a React component that has not been updated from its source?",
       options: ["Stale", "Fresh", "Lazy", "Hot"],
@@ -11,6 +16,7 @@ function Quiz8() {
         'Data that is out of sync with its source is called "stale" data.',
     },
     {
+      id: 2,
       question: "What does the second argument to useEffect represent?",
       options: [
         "Initial state",
@@ -23,6 +29,7 @@ function Quiz8() {
         "The second argument is the dependency array, which controls when the effect runs.",
     },
     {
+      id: 3,
       question:
         "Which fetch call correctly retrieves data from an API in JavaScript?",
       options: [
@@ -36,6 +43,7 @@ function Quiz8() {
         "You must parse the response with res.json() to turn it into usable JavaScript data.",
     },
     {
+      id: 4,
       question: "When should you update state after fetching data?",
       options: [
         "After successful data retrieval in useEffect",
@@ -48,6 +56,7 @@ function Quiz8() {
         "Update state after the data has been successfully fetched and processed, typically inside useEffect.",
     },
     {
+      id: 5,
       question: "What is the main role of data in React applications?",
       options: [
         "Powering user interface components",
@@ -60,6 +69,7 @@ function Quiz8() {
         "Data flows through components and powers the UI by providing values to render.",
     },
     {
+      id: 6,
       question: "How can you avoid stale data in React apps?",
       options: [
         "Rely on initial props",
@@ -72,6 +82,7 @@ function Quiz8() {
         "Regularly syncing local state with the source keeps data fresh and avoids staleness.",
     },
     {
+      id: 7,
       question:
         "What is the recommended React hook for fetching data in a function component?",
       options: ["useRef", "useContext", "useEffect", "useState"],
@@ -80,6 +91,7 @@ function Quiz8() {
         "useEffect is used to trigger side effects like data fetching after a render.",
     },
     {
+      id: 8,
       question: "Where should you update state after fetching data in a function component?",
       options: [
         "Outside the component",
@@ -92,6 +104,7 @@ function Quiz8() {
         "State updates after data fetching should happen inside useEffect.",
     },
     {
+      id: 9,
       question:
         "How do you access API data in the React component after fetching?",
       options: [
@@ -105,6 +118,7 @@ function Quiz8() {
         "Fetched data is usually stored in local state so the component can render it.",
     },
     {
+      id: 10,
       question:
         "Given: const [data, setData] = useState(null); What is the initial value of data?",
       options: ["Empty array", "Empty object", "undefined", "null"],
@@ -113,6 +127,7 @@ function Quiz8() {
         "The initial state argument is null, so data starts as null.",
     },
     {
+      id: 11,
       question:
         "Which state update pattern is recommended when updating based on previous state?",
       options: [
@@ -126,6 +141,7 @@ function Quiz8() {
         "When next state depends on previous state, pass a function: setState(prev => ...).",
     },
     {
+      id: 12,
       question:
         "What is a best practice for handling loading state when fetching data?",
       options: [
@@ -139,6 +155,7 @@ function Quiz8() {
         "A boolean loading flag that conditionally shows a spinner/indicator improves UX.",
     },
     {
+      id: 13,
       question:
         "Which HTTP protocol is most commonly used to request data in React?",
       options: ["TCP", "HTTP", "SMTP", "FTP"],
@@ -147,6 +164,7 @@ function Quiz8() {
         "HTTP is the standard protocol for web API requests from React.",
     },
     {
+      id: 14,
       question:
         "What should you do if a data fetch encounters an error?",
       options: [
@@ -160,6 +178,7 @@ function Quiz8() {
         "Store the error in state and show a helpful message so users know what happened.",
     },
     {
+      id: 15,
       question:
         "Where does most application data originate from in React apps?",
       options: [
@@ -173,6 +192,7 @@ function Quiz8() {
         "Most data is fetched from APIs, databases, or services in the cloud.",
     },
     {
+      id: 16,
       question:
         "When working with async/await in useEffect, what is the recommended pattern?",
       options: [
@@ -186,6 +206,7 @@ function Quiz8() {
         "Because the effect callback itself can't be async, define an async function inside and invoke it.",
     },
     {
+      id: 17,
       question:
         "Which pattern is commonly used to separate data fetching logic from presentation?",
       options: [
@@ -199,6 +220,7 @@ function Quiz8() {
         "Custom hooks encapsulate data-fetching logic and let you reuse it across components.",
     },
     {
+      id: 18,
       question:
         "What lifecycle is similar to useEffect for class components?",
       options: [
@@ -212,6 +234,7 @@ function Quiz8() {
         "componentDidMount is where data fetching typically occurs in class components, similar to useEffect on mount.",
     },
     {
+      id: 19,
       question:
         "In the code snippet: fetch(url).then(res => res.json()) what does res.json() do?",
       options: [
@@ -225,6 +248,7 @@ function Quiz8() {
         "res.json() parses the response body and returns a promise that resolves to a JavaScript object.",
     },
     {
+      id: 20,
       question:
         'What is "hydrating" an application in the context of data management?',
       options: [
@@ -237,22 +261,128 @@ function Quiz8() {
       explanation:
         "Hydrating means filling application components with fresh data from external sources.",
     },
-  ];
+  ]
+};
+
+function Quiz8() {
+  const questions = quiz8.questions;
+  const [answers, setAnswers] = useState({});
+  const [checked, setChecked] = useState(false);
+  const [score, setScore] = useState(0);
+
+  const handleOptionChangeQuiz8 = (qIndex, optionIndex, isMultiple) => {
+    setChecked(false); // Reset feedback when options are changed
+
+    setAnswers((prev) => {
+      const next = { ...prev };
+
+      if (isMultiple) {
+        const current = next[qIndex] || [];
+        if (current.includes(optionIndex)) {
+          next[qIndex] = current.filter((i) => i !== optionIndex);
+        } else {
+          next[qIndex] = [...current, optionIndex];
+        }
+      } else {
+        next[qIndex] = optionIndex;
+      }
+
+      return next;
+    });
+  };
+
+  const handleCheckAnswersQuiz8 = () => {
+    const newScore = checkAnswers(questions, answers); // Use the utility function to check answers
+    setScore(newScore);
+    setChecked(true);
+  };
 
   return (
-    <div>
-      <h2>Quiz 8 (Data Fetching & State Management)</h2>
-      {questions.map((q, index) => (
-        <div key={index}>
-          <p>{q.question}</p>
-          {q.options.map((option, optionIndex) => (
-            <div key={optionIndex}>
-              <input type="radio" id={`q${index}-opt${optionIndex}`} />
-              <label htmlFor={`q${index}-opt${optionIndex}`}>{option}</label>
-            </div>
-          ))}
-        </div>
-      ))}
+    <div className="quiz">
+      <h2>{quiz8.title}</h2>
+
+      {questions.map((q, qIndex) => {
+        const isMultiple = Array.isArray(q.correctIndex);
+        const name = `q${qIndex}`;
+
+        return (
+          <div key={q.id} className="question-block">
+            <h3>{qIndex + 1}. <strong>{q.question}</strong></h3>
+
+            {q.code && (
+              <pre className="code-block">
+                <code>{q.code}</code>
+              </pre>
+            )}
+
+            {q.options.map((option, optionIndex) => {
+              const value = answers[qIndex];
+              const isChecked = isMultiple
+                ? (value || []).includes(optionIndex)
+                : value === optionIndex;
+
+              return (
+                <label
+                  key={optionIndex}
+                  className="option"
+                  style={{ display: "block", margin: "4px 0" }} // ONE OPTION PER LINE
+                >
+                  <input
+                    type={isMultiple ? "checkbox" : "radio"}
+                    name={name}
+                    checked={isChecked}
+                    onChange={() =>
+                      handleOptionChangeQuiz8(qIndex, optionIndex, isMultiple)
+                    }
+                  />
+                  {" "}{option}
+                </label>
+              );
+            })}
+
+            {checked && (
+              <div className="feedback">
+                {(() => {
+                  const userAns = answers[qIndex];
+                  const correct = q.correctIndex;
+                  let isCorrect = false;
+
+                  if (Array.isArray(correct)) {
+                    const correctSet = [...correct].sort().join(",");
+                    const userSet = Array.isArray(userAns)
+                      ? [...userAns].sort().join(",")
+                      : "";
+                    isCorrect = correctSet === userSet;
+                  } else {
+                    isCorrect = userAns === correct;
+                  }
+
+                  return (
+                    <>
+                      <p>{isCorrect ? "✅ Correct" : "❌ Incorrect"}</p>
+                      <p>
+                        <strong>Correct answer(s): </strong>
+                        {Array.isArray(correct)
+                          ? correct.map((i) => q.options[i]).join(", ")
+                          : q.options[correct]}
+                      </p>
+                      {q.explanation && <p>{q.explanation}</p>}
+                    </>
+                  );
+                })()}
+              </div>
+            )}
+          </div>
+        );
+      })}
+
+      <button onClick={handleCheckAnswersQuiz8}>Check Answers</button>
+
+      {checked && (
+        <p className="score">
+          Score: {score} / {questions.length}
+        </p>
+      )}
     </div>
   );
 }

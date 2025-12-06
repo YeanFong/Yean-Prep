@@ -1,8 +1,13 @@
-import React from "react";
+// src/quizzes/quiz9.js
+import React, { useState } from "react";
+import { checkAnswers } from "../utils/checkAnswers"; // Import global utility function
 
-function Quiz9() {
-  const questions = [
+export const quiz9 = {
+  id: "quiz9",
+  title: "Quiz 9 (React Suspense & Error Boundaries)",
+  questions: [
     {
+      id: 1,
       question: "What is the primary purpose of React Suspense?",
       options: [
         "Routing",
@@ -15,6 +20,7 @@ function Quiz9() {
         "Suspense is designed to handle asynchronous operations, allowing components to 'wait' for something before rendering, particularly useful for code splitting and data fetching.",
     },
     {
+      id: 2,
       question: "Can Suspense be used with regular (non-lazy) components?",
       options: [
         "No, never",
@@ -27,6 +33,7 @@ function Quiz9() {
         "Suspense can work with any component that 'suspends' by throwing a promise, not just lazy-loaded components.",
     },
     {
+      id: 3,
       question: "What's the benefit of code splitting with React.lazy()?",
       options: [
         "Easier debugging",
@@ -39,6 +46,7 @@ function Quiz9() {
         "Code splitting with React.lazy reduces the initial bundle size by loading components only when needed.",
     },
     {
+      id: 4,
       question: "Can you use multiple lazy-loaded components in one Suspense boundary?",
       options: [
         "Only if they're siblings",
@@ -51,6 +59,7 @@ function Quiz9() {
         "A single Suspense boundary can wrap multiple lazy-loaded components, showing one fallback for all.",
     },
     {
+      id: 5,
       question: "What happens if a Suspense boundary doesn't have a fallback prop?",
       options: [
         "Uses default loader",
@@ -62,6 +71,7 @@ function Quiz9() {
       explanation: "If Suspense doesn't have a fallback, React will throw an error.",
     },
     {
+      id: 6,
       question: "What is concurrent mode in React?",
       options: [
         "Multi-threading in React",
@@ -74,7 +84,8 @@ function Quiz9() {
         "Concurrent mode is a set of experimental features that help React apps stay responsive by rendering component trees without blocking the main thread.",
     },
     {
-      question: "In this code, which component shows first?",
+      id: 7,
+      question: <b>In this code, which component shows first?</b>,
       code: `
 <Suspense fallback={<Loading />}>
   {showProfile && <Profile />}
@@ -90,6 +101,7 @@ function Quiz9() {
         "If showProfile is true and Profile suspends, Loading shows; if showProfile is false, nothing inside Suspense renders.",
     },
     {
+      id: 8,
       question: "What does this code do?",
       code: `
 const MyComponent = React.lazy(() => import('./MyComponent'));`,
@@ -104,6 +116,7 @@ const MyComponent = React.lazy(() => import('./MyComponent'));`,
         "This demonstrates code splitting by dynamically importing a component only when it's needed, reducing initial bundle size.",
     },
     {
+      id: 9,
       question: "Which React function enables lazy loading of components?",
       options: [
         "React.async()",
@@ -116,6 +129,7 @@ const MyComponent = React.lazy(() => import('./MyComponent'));`,
         "React.lazy() enables dynamic import of components, splitting code into smaller chunks that load on demand.",
     },
     {
+      id: 10,
       question: "Which static method is used in Error Boundaries to update state after an error?",
       options: [
         "getErrorState",
@@ -128,6 +142,7 @@ const MyComponent = React.lazy(() => import('./MyComponent'));`,
         "static getDerivedStateFromError() is used to update state so the next render shows fallback UI.",
     },
     {
+      id: 11,
       question: "In this code, what will display while Profile loads?",
       code: `
 <Suspense fallback={<Spinner />}>
@@ -144,6 +159,7 @@ const MyComponent = React.lazy(() => import('./MyComponent'));`,
         "The Spinner component will display as the fallback UI while Profile is loading.",
     },
     {
+      id: 12,
       question: "Which component is used as a wrapper to enable Suspense functionality?",
       options: ["<Wait>", "<Loader>", "<Suspense>", "<Async>"],
       correctIndex: 2,
@@ -151,6 +167,7 @@ const MyComponent = React.lazy(() => import('./MyComponent'));`,
         "The <Suspense> component wraps components that might suspend, providing a fallback UI while waiting.",
     },
     {
+      id: 13,
       question: "What does this code demonstrate?",
       code: `
 const LazyComponent = lazy(() => import('./Heavy'));`,
@@ -165,6 +182,7 @@ const LazyComponent = lazy(() => import('./Heavy'));`,
         "This demonstrates code splitting by dynamically importing a component only when it's needed, reducing initial bundle size.",
     },
     {
+      id: 14,
       question: "Which lifecycle method is used in Error Boundaries?",
       options: [
         "shouldComponentUpdate",
@@ -177,6 +195,7 @@ const LazyComponent = lazy(() => import('./Heavy'));`,
         "componentDidCatch() is the lifecycle method used to catch errors in descendant components.",
     },
     {
+      id: 15,
       question: "Which of the following is NOT a valid use case for Suspense?",
       options: [
         "Code splitting",
@@ -189,6 +208,7 @@ const LazyComponent = lazy(() => import('./Heavy'));`,
         "Suspense is designed for handling asynchronous operations like code splitting, lazy loading, and data fetching, not synchronous operations like form validation.",
     },
     {
+      id: 16,
       question: "Can you nest multiple Suspense boundaries?",
       options: [
         "No",
@@ -201,6 +221,7 @@ const LazyComponent = lazy(() => import('./Heavy'));`,
         "Multiple Suspense boundaries can be nested to provide granular loading states for different parts of the component tree.",
     },
     {
+      id: 17,
       question: "Can functional components be Error Boundaries?",
       options: [
         "Yes, with try-catch",
@@ -213,6 +234,7 @@ const LazyComponent = lazy(() => import('./Heavy'));`,
         "Currently, only class components can be Error Boundaries as there is no hook equivalent for componentDidCatch.",
     },
     {
+      id: 18,
       question: "In this code, what's wrong?",
       code: `
 <Suspense>
@@ -224,6 +246,7 @@ const LazyComponent = lazy(() => import('./Heavy'));`,
         "The Suspense component requires a fallback prop to specify what to show during loading.",
     },
     {
+      id: 19,
       question: "What prop does the Suspense component require to show while loading?",
       options: ["placeholder", "loading", "spinner", "fallback"],
       correctIndex: 3,
@@ -231,6 +254,7 @@ const LazyComponent = lazy(() => import('./Heavy'));`,
         "The fallback prop specifies what to render while the suspended component is loading.",
     },
     {
+      id: 20,
       question: "What is an Error Boundary used for?",
       options: [
         "Preventing errors",
@@ -242,22 +266,128 @@ const LazyComponent = lazy(() => import('./Heavy'));`,
       explanation:
         "Error Boundaries are React components that catch JavaScript errors anywhere in their child component tree, log those errors, and display fallback UI.",
     },
-  ];
+  ]
+};
+
+function Quiz9() {
+  const questions = quiz9.questions;
+  const [answers, setAnswers] = useState({});
+  const [checked, setChecked] = useState(false);
+  const [score, setScore] = useState(0);
+
+  const handleOptionChangeQuiz9 = (qIndex, optionIndex, isMultiple) => {
+    setChecked(false); // Reset feedback when options are changed
+
+    setAnswers((prev) => {
+      const next = { ...prev };
+
+      if (isMultiple) {
+        const current = next[qIndex] || [];
+        if (current.includes(optionIndex)) {
+          next[qIndex] = current.filter((i) => i !== optionIndex);
+        } else {
+          next[qIndex] = [...current, optionIndex];
+        }
+      } else {
+        next[qIndex] = optionIndex;
+      }
+
+      return next;
+    });
+  };
+
+  const handleCheckAnswersQuiz9 = () => {
+    const newScore = checkAnswers(questions, answers); // Use the utility function to check answers
+    setScore(newScore);
+    setChecked(true);
+  };
 
   return (
-    <div>
-      <h2>Quiz 9 (React Suspense & Error Boundaries)</h2>
-      {questions.map((q, index) => (
-        <div key={index}>
-          <p>{q.question}</p>
-          {q.options.map((option, optionIndex) => (
-            <div key={optionIndex}>
-              <input type="radio" id={`q${index}-opt${optionIndex}`} />
-              <label htmlFor={`q${index}-opt${optionIndex}`}>{option}</label>
-            </div>
-          ))}
-        </div>
-      ))}
+    <div className="quiz">
+      <h2>{quiz9.title}</h2>
+
+      {questions.map((q, qIndex) => {
+        const isMultiple = Array.isArray(q.correctIndex);
+        const name = `q${qIndex}`;
+
+        return (
+          <div key={q.id} className="question-block">
+            <h3>{qIndex + 1}. <strong>{q.question}</strong></h3>
+
+            {q.code && (
+              <pre className="code-block">
+                <code>{q.code}</code>
+              </pre>
+            )}
+
+            {q.options.map((option, optionIndex) => {
+              const value = answers[qIndex];
+              const isChecked = isMultiple
+                ? (value || []).includes(optionIndex)
+                : value === optionIndex;
+
+              return (
+                <label
+                  key={optionIndex}
+                  className="option"
+                  style={{ display: "block", margin: "4px 0" }} // ONE OPTION PER LINE
+                >
+                  <input
+                    type={isMultiple ? "checkbox" : "radio"}
+                    name={name}
+                    checked={isChecked}
+                    onChange={() =>
+                      handleOptionChangeQuiz9(qIndex, optionIndex, isMultiple)
+                    }
+                  />
+                  {" "}{option}
+                </label>
+              );
+            })}
+
+            {checked && (
+              <div className="feedback">
+                {(() => {
+                  const userAns = answers[qIndex];
+                  const correct = q.correctIndex;
+                  let isCorrect = false;
+
+                  if (Array.isArray(correct)) {
+                    const correctSet = [...correct].sort().join(",");
+                    const userSet = Array.isArray(userAns)
+                      ? [...userAns].sort().join(",")
+                      : "";
+                    isCorrect = correctSet === userSet;
+                  } else {
+                    isCorrect = userAns === correct;
+                  }
+
+                  return (
+                    <>
+                      <p>{isCorrect ? "✅ Correct" : "❌ Incorrect"}</p>
+                      <p>
+                        <strong>Correct answer(s): </strong>
+                        {Array.isArray(correct)
+                          ? correct.map((i) => q.options[i]).join(", ")
+                          : q.options[correct]}
+                      </p>
+                      {q.explanation && <p>{q.explanation}</p>}
+                    </>
+                  );
+                })()}
+              </div>
+            )}
+          </div>
+        );
+      })}
+
+      <button onClick={handleCheckAnswersQuiz9}>Check Answers</button>
+
+      {checked && (
+        <p className="score">
+          Score: {score} / {questions.length}
+        </p>
+      )}
     </div>
   );
 }
