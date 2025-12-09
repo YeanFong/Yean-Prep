@@ -111,7 +111,7 @@ const MyComponent = React.lazy(() => import('./MyComponent'));`,
         "Returns undefined",
         "Throws an error",
       ],
-      correctIndex: 1,
+      correctIndex: 0,
       explanation:
         "This creates a lazy-loaded component that will be dynamically imported when needed, reducing initial bundle size.",
     },
