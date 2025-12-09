@@ -373,6 +373,18 @@ function Quiz6() {
   const [checked, setChecked] = useState(false);
   const [score, setScore] = useState(0);
 
+  // Helper: compare multi-select answers safely
+  const areMultiAnswersEqual = (correct, userAns) => {
+    const toKey = (arr) =>
+      Array.isArray(arr)
+        ? [...new Set(arr.map((v) => Number(v)))] // cast to numbers, dedupe
+            .sort((a, b) => a - b)
+            .join(",")
+        : "";
+
+    return toKey(correct) === toKey(userAns);
+  };
+
   const handleOptionChangeQuiz6 = (qIndex, optionIndex, isMultiple) => {
     setChecked(false); // Reset feedback when options are changed
 
@@ -403,13 +415,11 @@ function Quiz6() {
       let isCorrect = false;
 
       if (Array.isArray(correct)) {
-        const correctSet = [...correct].sort().join(",");
-        const userSet = Array.isArray(userAns)
-          ? [...userAns].sort().join(",")
-          : "";
-        isCorrect = correctSet === userSet;
+        // multi-select question
+        isCorrect = areMultiAnswersEqual(correct, userAns);
       } else {
-        isCorrect = userAns === correct;
+        // single-answer question
+        isCorrect = Number(userAns) === Number(correct);
       }
 
       if (isCorrect) newScore += 1;
@@ -430,7 +440,9 @@ function Quiz6() {
         return (
           <div key={q.id} className="question-block">
             {/* number in front of the question */}
-            <h3>{qIndex + 1}. <strong>{q.question}</strong></h3>
+            <h3>
+              {qIndex + 1}. <strong>{q.question}</strong>
+            </h3>
 
             {q.code && (
               <pre className="code-block">
@@ -471,13 +483,9 @@ function Quiz6() {
                   let isCorrect = false;
 
                   if (Array.isArray(correct)) {
-                    const correctSet = [...correct].sort().join(",");
-                    const userSet = Array.isArray(userAns)
-                      ? [...userAns].sort().join(",")
-                      : "";
-                    isCorrect = correctSet === userSet;
+                    isCorrect = areMultiAnswersEqual(correct, userAns);
                   } else {
-                    isCorrect = userAns === correct;
+                    isCorrect = Number(userAns) === Number(correct);
                   }
 
                   return (
