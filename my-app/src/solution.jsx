@@ -10,6 +10,7 @@ const solutionData = [
         question:
           "Which of the following are valid ways to initialize useState? (Select all that apply)",
         correctAnswers: [
+          "useState()",
           "useState(0)",
           'useState("hello")',
           "useState({ name: 'John', age: 30 })",
