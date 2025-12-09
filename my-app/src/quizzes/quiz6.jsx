@@ -17,7 +17,7 @@ export const quiz6 = {
         'useState("hello")',
         "useState({ name: 'John', age: 30 })",
       ],
-      correctIndex: [1, 2, 3],
+      correctIndex: [0, 1, 2, 3],
       explanation:
         "useState can be initialized with any value (number, string, object, etc.). Calling useState() with no argument is allowed but uncommon.",
     },
