@@ -281,4 +281,5 @@ function Quiz5() {
     </div>
   );
 }
+
 export default Quiz5;
