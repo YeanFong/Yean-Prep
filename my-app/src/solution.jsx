@@ -424,6 +424,192 @@ const solutionData = [
       },
     ],
   },
+  {
+    quiz: "Quiz 6 - Handlebars Templating",
+    questions: [
+      {
+        question: "What is the context object in Handlebars templating?",
+        correctAnswers: [
+          "The object passed to the templating engine containing data for replacements",
+        ],
+      },
+      {
+        question: "Which order does the templating engine render content when using layouts?",
+        correctAnswers: ["View first, then layout"],
+      },
+      {
+        question:
+          "In Handlebars, how many curly brackets should you use to render HTML content without escaping it?",
+        correctAnswers: ["Three brackets: {{{content}}}"],
+      },
+      {
+        question: "Which comment syntax in Handlebars will NOT be sent to the browser?",
+        correctAnswers: ["{{! comment }}"],
+      },
+      {
+        question: "What does the {{#each}} helper do in Handlebars?",
+        correctAnswers: ["Iterates over an array"],
+      },
+      {
+        question: "What is a common use case for partials in web development?",
+        correctAnswers: ["Reusable components (widgets) across different pages"],
+      },
+      {
+        question:
+          "What placeholder is used in a layout file to indicate where the view content should be rendered?",
+        correctAnswers: ["{{{body}}}"],
+      },
+      {
+        question: "How do you render a view without a layout in Express?",
+        correctAnswers: ["res.render('view', { layout: null })"],
+      },
+      {
+        question: 'What is the purpose of "sections" in Handlebars templates?',
+        correctAnswers: [
+          "To allow views to inject content into different parts of the layout",
+        ],
+      },
+      {
+        question:
+          "Can express-handlebars support subdirectories for organizing partials?",
+        correctAnswers: ["Yes, you can organize partials in subdirectories"],
+      },
+      {
+        question:
+          "What is the advantage of using HTML5 Boilerplate for templates?",
+        correctAnswers: [
+          "It offers a well-crafted starting point with cross-browser compatibility",
+        ],
+      },
+      {
+        question:
+          "What is the primary advantage of using templating engines over writing HTML in JavaScript using document.write()?",
+        correctAnswers: ["Avoids context switching and escaping issues"],
+      },
+      {
+        question:
+          "What npm package is used to add Handlebars support to Express?",
+        correctAnswers: ["express-handlebars"],
+      },
+      {
+        question: "What is the purpose of the {{#unless}} helper in Handlebars?",
+        correctAnswers: ["It executes code only when the argument is false"],
+      },
+      {
+        question:
+          'How do you include a partial named "weather" in a Handlebars view?',
+        correctAnswers: ["{{>weather}}"],
+      },
+      {
+        question: "What is the default behavior of view caching in Express?",
+        correctAnswers: ["Disabled in development, enabled in production"],
+      },
+      {
+        question: "What is the purpose of a layout in Handlebars?",
+        correctAnswers: [
+          "To serve as a template for templates with common page structure",
+        ],
+      },
+      {
+        question:
+          "How do you access a parent context property when inside a nested block in Handlebars?",
+        correctAnswers: ["../property"],
+      },
+      {
+        question: "Where does Express look for partials by default?",
+        correctAnswers: ["/views/partials"],
+      },
+      {
+        question: "By default, where does Express look for views?",
+        correctAnswers: ["/views subdirectory"],
+      },
+    ],
+  },
+  {
+    quiz: "Quiz 7 - Forms",
+    questions: [
+      {
+        question: "What does the req.xhr property (or checking the header) help the server determine?",
+        correctAnswers: ["If the request was made via AJAX"],
+      },
+      {
+        question: "If the method attribute is omitted from an HTML <form> tag, what is the default?",
+        correctAnswers: ["GET"],
+      },
+      {
+        question: "Which encoding type is required for a form that includes file uploads?",
+        correctAnswers: ["multipart/form-data"],
+      },
+      {
+        question: 'What is the standard status code for a "See Other" redirect after a form submission?',
+        correctAnswers: ["303"],
+      },
+      {
+        question: "What is the purpose of the id attribute in an HTML input tag?",
+        correctAnswers: ["Styling and frontend functionality"],
+      },
+      {
+        question: "What happens if you omit the action attribute in an HTML form?",
+        correctAnswers: ["The form is submitted to its own URL"],
+      },
+      {
+        question: "Why is it recommended to redirect after a successful POST request?",
+        correctAnswers: ['To prevent "Confirm Form Resubmission" warnings'],
+      },
+      {
+        question: "Which attribute in an <input> field is used by the server to identify the field?",
+        correctAnswers: ["name"],
+      },
+      {
+        question: "Which HTTP method is typically associated with the querystring?",
+        correctAnswers: ["GET"],
+      },
+      {
+        question: "Why should you not use hidden form fields for secret information?",
+        correctAnswers: ["Users can easily see them by viewing the source"],
+      },
+      {
+        question: "What are the two primary options for sending client data to the server?",
+        correctAnswers: ["Querystring and Request Body"],
+      },
+      {
+        question: "Which middleware is commonly used in Express to handle URL-encoded form data?",
+        correctAnswers: ["body-parser"],
+      },
+      {
+        question: "Which Node package is recommended in the book for handling file uploads?",
+        correctAnswers: ["multiparty"],
+      },
+      {
+        question: "In a POST request, where does body-parser make the form data available?",
+        correctAnswers: ["req.body"],
+      },
+      {
+        question: 'What is a "honeypot" field in the context of form handling?',
+        correctAnswers: ["A hidden field designed to catch bots"],
+      },
+      {
+        question: "When using Fetch, what header is often sent to indicate an AJAX request?",
+        correctAnswers: ["X-Requested-With"],
+      },
+      {
+        question: "What is the risk of not specifying a form action?",
+        correctAnswers: ["It may lead to data loss or incorrect routing"],
+      },
+      {
+        question: "In modern web development, what is the shift regarding form rendering?",
+        correctAnswers: ["Toward Single-Page Applications (SPAs)"],
+      },
+      {
+        question: "What is the main benefit of using AJAX (Fetch) for form submission?",
+        correctAnswers: ["It provides a more seamless user experience without page reloads"],
+      },
+      {
+        question: "What is a major disadvantage of using GET for form submissions?",
+        correctAnswers: ["Browsers often limit querystring length"],
+      },
+    ],
+  },
 ];
 
 function Solution() {

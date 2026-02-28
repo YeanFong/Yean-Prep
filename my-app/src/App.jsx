@@ -4,6 +4,8 @@ import Quiz2 from "./quizzes/quiz2";
 import Quiz3 from "./quizzes/quiz3";
 import Quiz4 from "./quizzes/quiz4";
 import Quiz5 from "./quizzes/quiz5";
+import Quiz6 from "./quizzes/quiz6";
+import Quiz7 from "./quizzes/quiz7";
 import Solution from './solution';
 
 function App() {
@@ -28,6 +30,8 @@ function App() {
         <button onClick={() => handleQuizChange("quiz3")}>Quiz 3</button>
         <button onClick={() => handleQuizChange("quiz4")}>Quiz 4</button>
         <button onClick={() => handleQuizChange("quiz5")}>Quiz 5</button>
+        <button onClick={() => handleQuizChange("quiz6")}>Quiz 6</button>
+        <button onClick={() => handleQuizChange("quiz7")}>Quiz 7</button>
       </div>
 
       {/* Toggle Button for Solutions */}
@@ -48,6 +52,8 @@ function App() {
             {selectedQuiz === "quiz3" && <Quiz3 />}
             {selectedQuiz === "quiz4" && <Quiz4 />}
             {selectedQuiz === "quiz5" && <Quiz5 />}
+            {selectedQuiz === "quiz6" && <Quiz6 />}
+            {selectedQuiz === "quiz7" && <Quiz7 />}
           </>
         )}
       </div>
