@@ -6,6 +6,13 @@ import Quiz4 from "./quizzes/quiz4";
 import Quiz5 from "./quizzes/quiz5";
 import Quiz6 from "./quizzes/quiz6";
 import Quiz7 from "./quizzes/quiz7";
+import Quiz8 from "./quizzes/quiz8";
+import Quiz9 from "./quizzes/quiz9";
+import Quiz10 from "./quizzes/quiz10";
+import Quiz11 from "./quizzes/quiz11";
+import Quiz12 from "./quizzes/quiz12";
+import Quiz13 from "./quizzes/quiz13";
+import Quiz14 from "./quizzes/quiz14";
 import Solution from './solution';
 
 function App() {
@@ -32,6 +39,13 @@ function App() {
         <button onClick={() => handleQuizChange("quiz5")}>Quiz 5</button>
         <button onClick={() => handleQuizChange("quiz6")}>Quiz 6</button>
         <button onClick={() => handleQuizChange("quiz7")}>Quiz 7</button>
+        <button onClick={() => handleQuizChange("quiz8")}>Quiz 8</button>
+        <button onClick={() => handleQuizChange("quiz9")}>Quiz 9</button>
+        <button onClick={() => handleQuizChange("quiz10")}>Quiz 10</button>
+        <button onClick={() => handleQuizChange("quiz11")}>Quiz 11</button>
+        <button onClick={() => handleQuizChange("quiz12")}>Quiz 12</button>
+        <button onClick={() => handleQuizChange("quiz13")}>Quiz 13</button>
+        <button onClick={() => handleQuizChange("quiz14")}>Quiz 14</button>
       </div>
 
       {/* Toggle Button for Solutions */}
@@ -54,6 +68,13 @@ function App() {
             {selectedQuiz === "quiz5" && <Quiz5 />}
             {selectedQuiz === "quiz6" && <Quiz6 />}
             {selectedQuiz === "quiz7" && <Quiz7 />}
+            {selectedQuiz === "quiz8" && <Quiz8 />}
+            {selectedQuiz === "quiz9" && <Quiz9 />}
+            {selectedQuiz === "quiz10" && <Quiz10 />}
+            {selectedQuiz === "quiz11" && <Quiz11 />}
+            {selectedQuiz === "quiz12" && <Quiz12 />}
+            {selectedQuiz === "quiz13" && <Quiz13 />}
+            {selectedQuiz === "quiz14" && <Quiz14 />}
           </>
         )}
       </div>

@@ -610,6 +610,554 @@ const solutionData = [
       },
     ],
   },
+    {
+    quiz: "Quiz 8 - Cookies and Sessions",
+    questions: [
+      {
+        question: "How do you clear or delete a cookie in Express?",
+        correctAnswers: ["res.clearCookie('name')"],
+      },
+      {
+        question:
+          "What happens to a session if the session ID cookie is deleted by the user?",
+        correctAnswers: [
+          "The user is no longer associated with their session data",
+        ],
+      },
+      {
+        question: "What is the purpose of the maxAge option in a cookie?",
+        correctAnswers: [
+          "To determine how long the cookie lasts in milliseconds",
+        ],
+      },
+      {
+        question: "What is the main difference between a cookie and a session?",
+        correctAnswers: [
+          "Cookies are stored on the client; session data is stored on the server",
+        ],
+      },
+      {
+        question:
+          "In Express, where can you access the parsed cookies from an incoming request?",
+        correctAnswers: ["req.cookies"],
+      },
+      {
+        question:
+          "Which of these is a recommended production-ready session store?",
+        correctAnswers: ["Redis or MongoDB"],
+      },
+      {
+        question:
+          "Which property should be set to true to ensure a cookie is only sent over encrypted connections?",
+        correctAnswers: ["secure"],
+      },
+      {
+        question: 'What is the "path" option used for when setting a cookie?',
+        correctAnswers: ["The URL path for which the cookie is valid"],
+      },
+      {
+        question:
+          "Which header is used by the browser to send cookies back to the server?",
+        correctAnswers: ["Cookie"],
+      },
+      {
+        question: "What does the httpOnly flag on a cookie prevent?",
+        correctAnswers: ["Access via client-side JavaScript (XSS)"],
+      },
+      {
+        question:
+          "Why is the default MemoryStore for sessions discouraged for production?",
+        correctAnswers: [
+          "It causes memory leaks and doesn't support multiple server instances",
+        ],
+      },
+      {
+        question:
+          "To use signed cookies, what must be provided to the cookie-parser middleware?",
+        correctAnswers: ["A secret string"],
+      },
+      {
+        question: "Where are cookies actually stored?",
+        correctAnswers: ["On the client's browser/computer"],
+      },
+      {
+        question:
+          "Why is session-based authentication often preferred over sending raw credentials with every request?",
+        correctAnswers: [
+          "It is more secure than re-sending passwords and reduces server load",
+        ],
+      },
+      {
+        question: 'What is a "signed" cookie in the context of Express?',
+        correctAnswers: [
+          "A cookie that is digitally signed to detect client-side tampering",
+        ],
+      },
+      {
+        question:
+          "By default, Express's express-session uses which type of storage?",
+        correctAnswers: ["MemoryStore"],
+      },
+      {
+        question:
+          "In Express, which middleware is typically used to handle cookies?",
+        correctAnswers: ["cookie-parser"],
+      },
+      {
+        question: 'What is a "Flash Message" typically used for?',
+        correctAnswers: [
+          'One-time notifications (e.g., "Success!") that disappear after being viewed',
+        ],
+      },
+      {
+        question:
+          "When using cookie-parser, what is the functional difference between req.cookies and req.signedCookies?",
+        correctAnswers: [
+          "req.cookies contains unsigned cookies; req.signedCookies contains cookies verified against a secret",
+        ],
+      },
+      {
+        question:
+          "Which method is used to set a cookie in an Express response?",
+        correctAnswers: ["res.cookie()"],
+      },
+    ],
+  },
+  {
+    quiz: "Quiz 9 - Middleware",
+    questions: [
+      {
+        question: "Why might you use express.Router in an application?",
+        correctAnswers: ["To partition routes"],
+      },
+      {
+        question:
+          "Order matters in middleware. If a 404 handler is placed before a valid route, what happens?",
+        correctAnswers: ["The 404 is triggered"],
+      },
+      {
+        question:
+          "The express.static middleware is used for what purpose?",
+        correctAnswers: ["Serving files like CSS/JS"],
+      },
+      {
+        question: "Which of these can middleware NOT do?",
+        correctAnswers: ["Delete the database"],
+      },
+      {
+        question:
+          "In Express, route handlers (like app.get) are considered what?",
+        correctAnswers: ["Middleware"],
+      },
+      {
+        question:
+          "Which middleware is commonly used to parse URL-encoded form data?",
+        correctAnswers: ["body-parser"],
+      },
+      {
+        question:
+          "Error-handling middleware in Express is unique because it takes how many arguments?",
+        correctAnswers: ["4"],
+      },
+      {
+        question: "Which middleware would you use to handle browser cookies?",
+        correctAnswers: ["cookie-parser"],
+      },
+      {
+        question:
+          "If you want a middleware to run on every request, how should you add it?",
+        correctAnswers: ["app.use()"],
+      },
+      {
+        question:
+          'Which of these is a "third-party" middleware mentioned in the text?',
+        correctAnswers: ["cors"],
+      },
+      {
+        question: "Why is next() crucial for modularity?",
+        correctAnswers: ["It allows chainability"],
+      },
+      {
+        question:
+          "What happens if a middleware function does not call next() or send a response?",
+        correctAnswers: ["The request hangs"],
+      },
+      {
+        question:
+          'In the middleware pipeline, what is the "catch-all" handler usually used for?',
+        correctAnswers: ["404 Not Found"],
+      },
+      {
+        question: "What is the purpose of the next() function in middleware?",
+        correctAnswers: ["To pass control to the next middleware"],
+      },
+      {
+        question:
+          "Which middleware provides protection against Cross-Site Request Forgery?",
+        correctAnswers: ["csurf"],
+      },
+      {
+        question: 'What does the term "middleware principle" refer to?',
+        correctAnswers: ["The pipeline pattern"],
+      },
+      {
+        question:
+          "What is the fundamental definition of middleware in the context of Express?",
+        correctAnswers: ["A function that handles requests and responses"],
+      },
+      {
+        question:
+          "What is the primary difference between a route handler and general middleware?",
+        correctAnswers: ["Routes have paths"],
+      },
+      {
+        question:
+          "Which middleware is typically used for logging requests in Express?",
+        correctAnswers: ["morgan"],
+      },
+      {
+        question:
+          "Where is the body-parser data typically made available in the request?",
+        correctAnswers: ["req.body"],
+      },
+    ],
+  },
+  {
+    quiz: "Quiz 10 - Sending Email",
+    questions: [
+      {
+        question: "What is recommended for bulk email sending?",
+        correctAnswers: ["Specialized bulk email services"],
+      },
+      {
+        question: "What layout technique is commonly used in HTML email?",
+        correctAnswers: ["Tables"],
+      },
+      {
+        question:
+          "Nodemailer eliminates the need to understand complex email encoding details.",
+        correctAnswers: ["True"],
+      },
+      {
+        question:
+          "What feature allows sending emails to multiple recipients?",
+        correctAnswers: ["Nodemailer capability"],
+      },
+      {
+        question: "What is the role of middleware in email sending?",
+        correctAnswers: ["Encapsulating email functionality"],
+      },
+      {
+        question: "What does Nodemailer help simplify?",
+        correctAnswers: ["Email encoding and formatting"],
+      },
+      {
+        question:
+          'Email headers like the "from" address cannot be changed by the sender.',
+        correctAnswers: ["False"],
+      },
+      {
+        question: "Which library is used in Node.js for sending emails?",
+        correctAnswers: ["Nodemailer"],
+      },
+      {
+        question: "Why is HTML email difficult to implement?",
+        correctAnswers: ["Limited client support and outdated standards"],
+      },
+      {
+        question: "Which protocol is primarily used for sending email?",
+        correctAnswers: ["SMTP"],
+      },
+      {
+        question: "What is required in every email message?",
+        correctAnswers: ["From address"],
+      },
+      {
+        question:
+          "HTML email is universally consistent across all email clients.",
+        correctAnswers: ["False"],
+      },
+      {
+        question:
+          "What is recommended when writing HTML email for compatibility?",
+        correctAnswers: ["Write simple, old-style HTML"],
+      },
+      {
+        question:
+          "What is a common practice for automated email addresses?",
+        correctAnswers: ["do-not-reply@domain.com"],
+      },
+      {
+        question: "What are the two main formats for email content?",
+        correctAnswers: ["Plain text and HTML"],
+      },
+      {
+        question:
+          "Why is it recommended to include both HTML and text email versions?",
+        correctAnswers: ["For compatibility with all users"],
+      },
+      {
+        question: "What is one challenge with email compatibility?",
+        correctAnswers: ["Different email client support"],
+      },
+      {
+        question: 'What is "spoofing" in email?',
+        correctAnswers: ['Setting a fake "from" address'],
+      },
+      {
+        question: "What does MTA stand for?",
+        correctAnswers: ["Mail Transfer Agent"],
+      },
+      {
+        question: "What can be included in HTML emails?",
+        correctAnswers: ["Images and formatted content"],
+      },
+    ],
+  },
+  {
+    quiz: "Quiz 11 - Persistence",
+    questions: [
+      {
+        question:
+          'Which database type is characterized by a "schema-less" nature and stores data in documents?',
+        correctAnswers: ["NoSQL (e.g., MongoDB)"],
+      },
+      {
+        question:
+          "Which property is typically used in a Mongoose schema to ensure a field must be provided?",
+        correctAnswers: ["required: true"],
+      },
+      {
+        question:
+          "Why is it recommended to use environment variables for database credentials?",
+        correctAnswers: ["To keep sensitive information out of source control"],
+      },
+      {
+        question:
+          "Which term refers to the ability of a database to handle growth by adding more machines to a cluster?",
+        correctAnswers: ["Horizontal Scaling"],
+      },
+      {
+        question: "What is the purpose of mongoose.connect()?",
+        correctAnswers: [
+          "To establish a connection between Node.js and MongoDB",
+        ],
+      },
+      {
+        question:
+          'In a "One-to-Many" relationship in MongoDB, what is the most common way to represent the "Many" side?',
+        correctAnswers: [
+          "Nesting an array of subdocuments or using references",
+        ],
+      },
+      {
+        question: 'What is a "sharded" database?',
+        correctAnswers: [
+          "A database where data is partitioned across multiple servers",
+        ],
+      },
+      {
+        question:
+          "How does MongoDB handle document identifiers by default?",
+        correctAnswers: ["It generates a unique _id field (ObjectId)"],
+      },
+      {
+        question:
+          'What is a "Connection String" (URI) in the context of MongoDB?',
+        correctAnswers: [
+          "A URL that tells the application where and how to connect to the database",
+        ],
+      },
+      {
+        question: 'What is a "Seeder" script used for in development?',
+        correctAnswers: [
+          "To populate a database with initial or dummy data",
+        ],
+      },
+      {
+        question:
+          'What is the main benefit of "Normalization" in relational databases?',
+        correctAnswers: ["Reduced data redundancy and improved integrity"],
+      },
+      {
+        question:
+          "Which Node.js package is widely used as an Object Data Modeling (ODM) library for MongoDB?",
+        correctAnswers: ["Mongoose"],
+      },
+      {
+        question:
+          "Which of the following is a reason to choose a Relational Database (like PostgreSQL) over a NoSQL database?",
+        correctAnswers: [
+          "Requirement for complex joins and strict data integrity",
+        ],
+      },
+      {
+        question: "What does the Lean option do in a Mongoose query?",
+        correctAnswers: [
+          "It returns plain JavaScript objects instead of full Mongoose documents",
+        ],
+      },
+      {
+        question:
+          'What does "ACID" stand for in relational database management systems?',
+        correctAnswers: [
+          "Atomicity, Consistency, Isolation, Durability",
+        ],
+      },
+      {
+        question:
+          "What happens if you try to save a Mongoose document that fails schema validation?",
+        correctAnswers: [
+          "The save() method returns an error or rejects the promise",
+        ],
+      },
+      {
+        question:
+          'When using MongoDB, what is a "collection" roughly equivalent to in a relational database?',
+        correctAnswers: ["A Table"],
+      },
+      {
+        question:
+          "In Mongoose, what is the difference between a Schema and a Model?",
+        correctAnswers: [
+          "A Schema defines structure; a Model is a constructor compiled from the Schema",
+        ],
+      },
+      {
+        question:
+          "Which Mongoose method is used to retrieve a single document by its ID?",
+        correctAnswers: ["Model.findById()"],
+      },
+      {
+        question:
+          "Which of the following is NOT a valid Mongoose SchemaType?",
+        correctAnswers: ["ArrayList"],
+      },
+    ],
+  },
+  {
+    quiz: "Quiz 12 - Route Management",
+    questions: [
+      {
+        question:
+          "If a sub-router is mounted at /admin and has a route .get('/users'), what is the full URL?",
+        correctAnswers: ["/admin/users"],
+      },
+      {
+        question:
+          "How do you access the query string (e.g., ?sort=asc) in a route handler?",
+        correctAnswers: ["req.query"],
+      },
+      {
+        question:
+          "Can route parameters contain hyphens (-) or dots (.)?",
+        correctAnswers: [
+          "Yes, they are interpreted literally between parameters",
+        ],
+      },
+      {
+        question:
+          "Chapter 14 discusses using Regular Expressions in routes. How are they passed to app.get?",
+        correctAnswers: ["As a RegExp literal (e.g., /^\\/user$/)"],
+      },
+      {
+        question:
+          "Where are route parameters stored in the Express request object?",
+        correctAnswers: ["req.params"],
+      },
+      {
+        question:
+          "According to Chapter 14, what is the primary benefit of moving route handlers into their own modules?",
+        correctAnswers: [
+          "It improves maintainability and keeps the main file clean",
+        ],
+      },
+      {
+        question:
+          'Why might you use express.Router() to create a "sub-router"?',
+        correctAnswers: [
+          "To group related routes (like an admin section) under a common prefix",
+        ],
+      },
+      {
+        question: 'What is a "sluggified" URL?',
+        correctAnswers: [
+          "A human-readable string used in a URL (e.g., /post/my-new-post)",
+        ],
+      },
+      {
+        question:
+          "Why is it important to place the 404 handler after all other routes?",
+        correctAnswers: [
+          "So it only executes if no other route matches",
+        ],
+      },
+      {
+        question:
+          'In the example of "Route Groups," what is the suggested way to link a "staff" module to the main app?',
+        correctAnswers: [
+          "Using require('./lib/handlers') and passing the app to a function",
+        ],
+      },
+      {
+        question:
+          "How does Express handle a route defined with a wildcard *?",
+        correctAnswers: ["It matches any character sequence"],
+      },
+      {
+        question:
+          "What does the + character signify in an Express route path?",
+        correctAnswers: [
+          "Matches the preceding character one or more times",
+        ],
+      },
+      {
+        question:
+          "If you define a route /user(name)?, which URLs will match?",
+        correctAnswers: ["Both /user and /username"],
+      },
+      {
+        question:
+          "In a route path like /staff/:city/:name, what represents a route parameter?",
+        correctAnswers: [":city and :name"],
+      },
+      {
+        question: "What is the purpose of the app.route() method?",
+        correctAnswers: [
+          "To create chainable route handlers for a single route path",
+        ],
+      },
+      {
+        question:
+          "Which of these is a valid way to handle a POST request to /signup?",
+        correctAnswers: ["app.post('/signup', ...)"],
+      },
+      {
+        question:
+          'Chapter 14 mentions "Automatic Views." What does this concept refer to?',
+        correctAnswers: [
+          "A pattern where routes are automatically generated based on view file names",
+        ],
+      },
+      {
+        question:
+          'What is the "Redirection" status code typically used for a permanent move?',
+        correctAnswers: ["301"],
+      },
+      {
+        question:
+          "When using res.render('profile', { name: 'Node' }), what is the second argument?",
+        correctAnswers: [
+          "The context object (data passed to the view)",
+        ],
+      },
+      {
+        question:
+          "Which character is used in an Express route path to make the preceding character optional?",
+        correctAnswers: ["?"],
+      },
+    ],
+  },
 ];
 
 function Solution() {
