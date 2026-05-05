@@ -610,7 +610,7 @@ const solutionData = [
       },
     ],
   },
-    {
+  {
     quiz: "Quiz 8 - Cookies and Sessions",
     questions: [
       {
@@ -1155,6 +1155,277 @@ const solutionData = [
         question:
           "Which character is used in an Express route path to make the preceding character optional?",
         correctAnswers: ["?"],
+      },
+    ],
+  },
+  {
+    quiz: "Quiz 13 - API Request",
+    questions: [
+      {
+        question:
+          "What HTTP header is used by the client to indicate what media types it is willing to receive from the API?",
+        correctAnswers: ["Accept"],
+      },
+      {
+        question:
+          "What is the recommended naming convention for resource URIs in a REST API?",
+        correctAnswers: [
+          "Use plural nouns for resource collections (e.g., /api/users).",
+        ],
+      },
+      {
+        question:
+          "What does the acronym REST stand for in the context of web APIs?",
+        correctAnswers: ["Representational State Transfer"],
+      },
+      {
+        question: 'What is meant by the "stateless" constraint in REST?',
+        correctAnswers: [
+          "No client context is stored on the server between requests.",
+        ],
+      },
+      {
+        question:
+          "In an Express route handling API errors, what is the default status code if none is explicitly set before sending the response?",
+        correctAnswers: ["200 OK"],
+      },
+      {
+        question:
+          "What is a common practice for maintaining backward compatibility when updating an API's structure?",
+        correctAnswers: [
+          "Versioning the API, typically in the URL path (e.g., /api/v1/).",
+        ],
+      },
+      {
+        question: "What is the purpose of CORS in web development?",
+        correctAnswers: [
+          "To allow restricted resources on a web page to be requested from another domain.",
+        ],
+      },
+      {
+        question:
+          "What HTTP status code is typically returned upon successfully creating a resource via a POST request?",
+        correctAnswers: ["201 Created"],
+      },
+      {
+        question: "What is the role of the Content-Type header in an API request?",
+        correctAnswers: [
+          "It indicates the media type of the resource being sent to the server.",
+        ],
+      },
+      {
+        question: 'What does it mean for an HTTP method to be "idempotent"?',
+        correctAnswers: [
+          "Performing it multiple times has the same effect as performing it once.",
+        ],
+      },
+      {
+        question:
+          "Which HTTP method is conventionally used to retrieve an existing resource from a REST API?",
+        correctAnswers: ["GET"],
+      },
+      {
+        question:
+          "Which HTTP method is standard for creating a new resource on the server?",
+        correctAnswers: ["POST"],
+      },
+      {
+        question:
+          "In an Express application, which method is explicitly used to send a JSON response to the client?",
+        correctAnswers: ["res.json(data)"],
+      },
+      {
+        question:
+          "When accessing the parsed data of a POST request, which Express object property is used?",
+        correctAnswers: ["req.body"],
+      },
+      {
+        question:
+          "How do you access route parameters (e.g., the id in /api/users/:id) in an Express API route?",
+        correctAnswers: ["req.params.id"],
+      },
+      {
+        question:
+          "Which built-in middleware is required in modern Express to parse incoming requests with JSON payloads?",
+        correctAnswers: ["app.use(express.json())"],
+      },
+      {
+        question:
+          "What HTTP status code is appropriate when a user attempts an action they are not authenticated to perform?",
+        correctAnswers: ["401 Unauthorized"],
+      },
+      {
+        question:
+          "How do you access query string parameters (e.g., ?sort=asc) in an Express GET request?",
+        correctAnswers: ["req.query.sort"],
+      },
+      {
+        question:
+          "Why might an API endpoint return a 204 No Content status code?",
+        correctAnswers: [
+          "The request was successful, but there is no payload body to return.",
+        ],
+      },
+      {
+        question:
+          "When an Express server encounters an unhandled exception during an API request, what status code should ideally be returned by the error-handling middleware?",
+        correctAnswers: ["500 Internal Server Error"],
+      },
+      {
+        question:
+          "How does res.json() differ from res.send() when passing an object or array?",
+        correctAnswers: [
+          "res.json() sets the Content-Type header to application/json explicitly.",
+        ],
+      },
+      {
+        question:
+          "Which HTTP status code should an API return if a requested resource, like a specific user ID, cannot be found?",
+        correctAnswers: ["404 Not Found"],
+      },
+      {
+        question:
+          "Which HTTP method is specifically designed for applying partial modifications to a resource?",
+        correctAnswers: ["PATCH"],
+      },
+      {
+        question:
+          "Which HTTP status code indicates a generic client-side error, such as malformed JSON syntax in the request body?",
+        correctAnswers: ["400 Bad Request"],
+      },
+    ],
+  },
+  {
+    quiz: "Quiz 14 - Express and SPA",
+    questions: [
+      {
+        question: 'Why are "Loading Spinners" more common in SPAs?',
+        correctAnswers: [
+          "To indicate that data is being fetched asynchronously behind the scenes",
+        ],
+      },
+      {
+        question:
+          'What is "Session Authentication" in the context of an SPA and Node.js?',
+        correctAnswers: [
+          "The server stores session data in memory or a database and tracks the user via a Session ID cookie",
+        ],
+      },
+      {
+        question:
+          "Which architectural pattern is often used by SPAs to interact with the server?",
+        correctAnswers: ["REST or GraphQL APIs"],
+      },
+      {
+        question: 'What is "Client-Side Routing" in an SPA?',
+        correctAnswers: [
+          "Managing the URL and navigation within the browser via JavaScript",
+        ],
+      },
+      {
+        question:
+          "Why is an SPA potentially more vulnerable to CSRF when using session-based authentication?",
+        correctAnswers: [
+          "Because the browser automatically attaches session cookies to all API requests, even if initiated from a different site",
+        ],
+      },
+      {
+        question: "What is Cross-Site Request Forgery (CSRF)?",
+        correctAnswers: [
+          "An attack that tricks a logged-in user's browser into sending a malicious request to a web app",
+        ],
+      },
+      {
+        question:
+          "Which JavaScript framework is NOT primarily used for building SPAs?",
+        correctAnswers: ["Express"],
+      },
+      {
+        question:
+          "How does an SPA handle a 404 error if the user types an invalid URL?",
+        correctAnswers: [
+          'The client-side router detects the mismatch and renders a "Not Found" component',
+        ],
+      },
+      {
+        question:
+          "In an SPA, what does the server usually send in response to the very first request?",
+        correctAnswers: [
+          "A minimal HTML file, CSS, and a large JavaScript bundle",
+        ],
+      },
+      {
+        question:
+          "Why might a developer choose JWT (JSON Web Tokens) over Sessions for an SPA?",
+        correctAnswers: [
+          "JWT is stateless, meaning the server doesn't need to store session data in a database",
+        ],
+      },
+      {
+        question:
+          "What is the fundamental difference between a traditional web app and a Single-Page Application (SPA)?",
+        correctAnswers: [
+          "SPAs load a single HTML page and dynamically update content without full page reloads",
+        ],
+      },
+      {
+        question: 'Why is "State Management" more complex in an SPA?',
+        correctAnswers: [
+          "Because the app lives for a long time and must track data across many interactions",
+        ],
+      },
+      {
+        question:
+          "In an SPA-Backend architecture, how is a CSRF token typically provided to the frontend?",
+        correctAnswers: [
+          "It is often sent in a cookie or as a custom header during the initial load or a login request",
+        ],
+      },
+      {
+        question:
+          "Which of the following is a common challenge for SPAs mentioned in Chapter 16?",
+        correctAnswers: [
+          "Search Engine Optimization (SEO) for content rendered only via JS",
+        ],
+      },
+      {
+        question:
+          'What is a "Preflight Request" (OPTIONS) in the context of SPA security?',
+        correctAnswers: [
+          "A request sent by the browser to check if the server allows a cross-origin request before sending the actual data",
+        ],
+      },
+      {
+        question:
+          'What is the main advantage of an SPA regarding "Perceived Performance"?',
+        correctAnswers: [
+          'The UI feels more responsive because transitions happen immediately without "white flashes"',
+        ],
+      },
+      {
+        question:
+          'Why should "state-changing" API methods (POST, PUT, DELETE) always require a CSRF token?',
+        correctAnswers: [
+          "Because GET requests are generally considered safe and shouldn't change data, whereas these methods modify server state",
+        ],
+      },
+      {
+        question:
+          "Which browser API is primarily responsible for allowing SPAs to change the URL without a page reload?",
+        correctAnswers: ["The History API (pushState)"],
+      },
+      {
+        question:
+          "What is the most common defense against CSRF mentioned in the context of Node/Express?",
+        correctAnswers: [
+          'Using CSRF tokens that the client must include in "state-changing" requests (POST, PUT, DELETE)',
+        ],
+      },
+      {
+        question: "What is the purpose of the HttpOnly flag on a session cookie?",
+        correctAnswers: [
+          "It prevents client-side JavaScript from accessing the cookie, reducing the risk of XSS attacks",
+        ],
       },
     ],
   },
