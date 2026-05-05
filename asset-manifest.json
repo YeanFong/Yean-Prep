@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Yean-Prep/static/css/main.f04ed581.css",
-    "main.js": "/Yean-Prep/static/js/main.be1ef0e3.js",
+    "main.js": "/Yean-Prep/static/js/main.d0e2cb44.js",
     "index.html": "/Yean-Prep/index.html",
     "main.f04ed581.css.map": "/Yean-Prep/static/css/main.f04ed581.css.map",
-    "main.be1ef0e3.js.map": "/Yean-Prep/static/js/main.be1ef0e3.js.map"
+    "main.d0e2cb44.js.map": "/Yean-Prep/static/js/main.d0e2cb44.js.map"
   },
   "entrypoints": [
     "static/css/main.f04ed581.css",
-    "static/js/main.be1ef0e3.js"
+    "static/js/main.d0e2cb44.js"
   ]
 }
